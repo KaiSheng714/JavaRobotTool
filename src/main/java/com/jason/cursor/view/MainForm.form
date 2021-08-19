@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.jason.cursor.view.MainForm">
+  <grid id="27dc6" binding="panel" layout-manager="GridBagLayout">
+    <constraints>
+      <xy x="297" y="337" width="540" height="142"/>
+    </constraints>
+    <properties>
+      <focusable value="true"/>
+      <maximumSize width="1000" height="1000"/>
+      <minimumSize width="540" height="100"/>
+      <preferredSize width="540" height="200"/>
+      <requestFocusEnabled value="true"/>
+      <verifyInputWhenFocusTarget value="false"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <component id="31a7c" class="javax.swing.JButton" binding="startButton">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="227" height="9"/>
+          </grid>
+          <gridbag weightx="1.0" weighty="1.5" ipadx="5" ipady="5"/>
+        </constraints>
+        <properties>
+          <alignmentX value="1.0"/>
+          <alignmentY value="1.0"/>
+          <autoscrolls value="false"/>
+          <horizontalAlignment value="0"/>
+          <horizontalTextPosition value="0"/>
+          <text value="Start"/>
+        </properties>
+      </component>
+      <component id="136f9" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="1.0" weighty="0.5"/>
+        </constraints>
+        <properties>
+          <horizontalAlignment value="0"/>
+          <horizontalTextPosition value="0"/>
+          <text value="Status: "/>
+          <verticalAlignment value="0"/>
+        </properties>
+      </component>
+      <component id="1dd74" class="javax.swing.JLabel" binding="statusLabel">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="1" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="1.0" weighty="1.0"/>
+        </constraints>
+        <properties>
+          <autoscrolls value="false"/>
+          <doubleBuffered value="false"/>
+          <font name="Lucida Sans Typewriter" size="16" style="1"/>
+          <horizontalAlignment value="2"/>
+          <horizontalTextPosition value="2"/>
+          <maximumSize width="300" height="200"/>
+          <minimumSize width="200" height="200"/>
+          <preferredSize width="200" height="40"/>
+          <requestFocusEnabled value="true"/>
+          <text value="Stop"/>
+          <visible value="true"/>
+        </properties>
+      </component>
+      <component id="4f127" class="javax.swing.JButton" binding="stopButton" default-binding="true">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="60" height="9"/>
+          </grid>
+          <gridbag weightx="1.0" weighty="1.5" ipadx="5" ipady="5"/>
+        </constraints>
+        <properties>
+          <enabled value="false"/>
+          <text value="Stop"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>

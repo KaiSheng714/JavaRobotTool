@@ -1,49 +1,47 @@
 package com.jason.cursor.task;
 
-import com.jason.cursor.view.MainForm;
-
 import java.awt.*;
-import java.time.LocalTime;
+import java.awt.event.InputEvent;
 
 public class MoveCursorTask implements Runnable {
 
-    private final MainForm form;
     private final Robot robot;
+    private boolean running;
 
-    public MoveCursorTask(MainForm form, Robot robot) {
-        this.form = form;
-        this.robot = robot;
+    public MoveCursorTask() throws Exception {
+        robot = new Robot();
     }
 
-    private boolean isWorkTime() {
-        LocalTime now = LocalTime.now();
-        return now.isAfter(LocalTime.parse("09:00:00")) && now.isBefore(LocalTime.parse("11:58:00"))
-                ||
-                now.isAfter(LocalTime.parse("13:05:00")) && now.isBefore(LocalTime.parse("15:00:00"))
-                ||
-                now.isAfter(LocalTime.parse("15:30:00")) && now.isBefore(LocalTime.parse("18:00:00"));
+    public void terminate() {
+        running = false;
     }
 
     @SuppressWarnings("all")
     @Override
     public void run() {
-        while (true) {
+        running = true;
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int centerX = screenSize.width / 2;
+        int centerY = screenSize.height / 2;
+        robot.mouseMove(centerX, centerY);
+
+        int NUM_POINTS = 10;
+        while (running) {
             try {
                 PointerInfo point = MouseInfo.getPointerInfo();
-                if (point != null) {
-                    robot.mouseMove((int) point.getLocation().getX() + 1, (int) point.getLocation().getY());
-                } else {
-                    // in lock screen, wait until unlock
-                    continue;
+                for (int radius = 100; radius < 300 && running; radius += 50) {
+                    for (int i = 0; i < NUM_POINTS && running; i++) {
+                        final double angle = Math.toRadians(((double) i / NUM_POINTS) * 360d);
+                        int x = centerX + (int) (Math.cos(angle) * radius);
+                        int y = centerY + (int) (Math.sin(angle) * radius);
+                        robot.mouseMove(x, y);
+                        robot.delay(500);
+                        robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
+                        robot.delay(10);
+                        robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
+                    }
                 }
-
-                if (isWorkTime()) {
-                    Thread.sleep(200 * 1000);
-                } else {
-                    form.pause();
-                    Thread.sleep(590 * 1000);
-                    form.resume();
-                }
+                Thread.sleep(5 *  60 * 1000);
             } catch (Exception e) {
                 e.printStackTrace();
             }

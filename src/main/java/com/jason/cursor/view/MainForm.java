@@ -1,7 +1,5 @@
 package com.jason.cursor.view;
 
-import com.jason.cursor.task.MoveCursorTask;
-
 import javax.swing.*;
 import javax.swing.plaf.FontUIResource;
 import javax.swing.text.StyleContext;
@@ -30,13 +28,15 @@ public class MainForm {
         frame.pack();
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
-        frame.addWindowStateListener(e -> {
-            if (e.getNewState() == Frame.ICONIFIED) {
-                frame.setVisible(false);
-            } else {
-                frame.setVisible(true);
-            }
-        });
+
+//        frame.addWindowStateListener(e -> {
+//            if (e.getNewState() == Frame.ICONIFIED) {
+//                frame.setVisible(false);
+//            } else {
+//                frame.setVisible(true);
+//            }
+//        });
+
 
         viewModel = new ViewModel(this);
 
@@ -68,25 +68,19 @@ public class MainForm {
             popup.add(exitMenuItem);
             SystemTray.getSystemTray().add(trayIcon);
 
-            robot = new Robot();
         } catch (Exception e) {
             e.printStackTrace();
             System.exit(-1);
         }
 
-        start();
     }
 
     private void start() {
-        viewModel.refreshView(STATE_RUNNING);
-        taskThread = new Thread(new MoveCursorTask(this, robot));
-        taskThread.start();
-        frame.setExtendedState(Frame.ICONIFIED);
+
     }
 
     private void stop() {
-        viewModel.refreshView(STATE_STOP);
-        taskThread.interrupt();
+
     }
 
     public void pause() {

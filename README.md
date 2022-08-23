@@ -1,5 +1,5 @@
-# Cursor
-Moving cursor automatically to prevent lock screen.
+# JavaRobotTool
+Moving cursor automatically
 
 
 ## Build

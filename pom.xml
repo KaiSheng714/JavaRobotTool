@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.jason</groupId>
-    <artifactId>cursor</artifactId>
+    <artifactId>JavaRobotTool</artifactId>
     <version>1.0.0</version>
 
     <properties>
@@ -19,10 +19,15 @@
             <artifactId>forms_rt</artifactId>
             <version>7.0.3</version>
         </dependency>
+        <dependency>
+            <groupId>lc.kra.system</groupId>
+            <artifactId>system-hook</artifactId>
+            <version>3.8</version>
+        </dependency>
     </dependencies>
 
     <build>
-        <finalName>cursor</finalName>
+        <finalName>JavaRobotTool</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
